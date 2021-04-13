@@ -1,0 +1,33 @@
+{% include 'header.html' %}
+    <div class="container">
+        <a href="/create" class="my-3 btn btn-success">Registrar Empleado</a>
+
+        <table class="table table-light">
+            <thead class="thead-light">
+                <tr>
+                    <th>#</th>
+                    <th>Foto</th>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for empleado in registros %} <!--USO DE JINJA2-->
+                <tr>
+                    <td>{{empleado[0]}}</td>
+                    <td><img class="img-thumbnail" width="100" src="uploads/{{empleado[3]}}"></td>
+                    <td>{{empleado[1]}}</td>
+                    <td>{{empleado[2]}}</td>
+                    <td> 
+                        <a href="/edit/{{empleado[0]}}">Editar</a>
+                        |
+                        <a href="/eliminar/{{empleado[0]}}">Eliminar</a>
+                        
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% include 'footer.html' %}

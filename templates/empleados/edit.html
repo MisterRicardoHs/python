@@ -1,0 +1,29 @@
+{% include 'header.html' %}
+
+{% for empleado in registro %}
+ <h3 class="my-3 text-center">Formulario de Edición</h3>
+    <form method="POST" action="/update" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="txtNombre">Nombre: </label>
+            <input type="text" name="txtNombre" id="txtNombre" value="{{empleado[1]}}">
+        </div>
+        <div class="form-group">
+            <label for="txtCorreo">Correo: </label>
+            <input type="text" name="txtCorreo" id="txtCorreo" value="{{empleado[2]}}">
+        </div>
+        <div class="form-group">
+            <label for="foto">Foto: </label>
+            <embed src="../../uploads/{{empleado[3]}}" type="">
+            
+            <input type="file" name="foto" id="foto">
+            <input type="hidden" name="antigua" value="{{empleado[3]}}">
+            <input type="hidden" name="id" value="{{empleado[0]}}">
+        </div>
+        <br>
+        <div class="form-group">
+                <input type="submit" value="Actualizar" class="btn btn-success">
+        </div>
+    </form>
+{% endfor %}
+
+{% include 'footer.html' %}
